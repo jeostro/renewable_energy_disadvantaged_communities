@@ -1,4 +1,4 @@
-# Community Solar and Disadvantaged Communities in NY, Joanna Ostroot
+# Community Solar and Disadvantaged Communities in NY, by Joanna Ostroot
 Key question: Is there appropriate land near disadvantaged communities in NY that may be used for community solar?
 
 # Summary
