@@ -4,18 +4,20 @@
 Created on Tue Apr 23 20:45:26 2024
 
 @author: jeostro
+
+Script 4/6
+Purpose: Create a geopackage layer of NY counties.
+
+Required input files:
+    -"cb_2023_us_county_5m.zip", downloaded from US Census Bureau:
+    https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+    
 """
-# Script 4
-## Purpose: Read US cartographic boundary shapefile and filter for only NYS counties, for QGIS map layer
 
 # Import modules
 
 import pandas as pd
-import numpy as np
-import requests
 import geopandas as gpd
-import matplotlib.pyplot as plt
-import fiona
 
 # Read in file
 

@@ -3,23 +3,27 @@
 """
 Created on Fri Apr 26 18:27:22 2024
 
+Script 3/6
+Purpose: Filter DAC data to only a few columns, so the size is more manageable 
+    for later merges. Create geopackage.
+    
+Required input files:
+    -"dac_designation.gpkg"
+    
 @author: jeostro
+
 """
-# Script 3
-## Purpose: Pick out only needed columns of DAC before a join
     
 # Import modules
 
 import pandas as pd
-import numpy as np
-import requests
 import geopandas as gpd
 
-# Copy joined DAC data
+# Read joined DAC data
 
 dac_sm = gpd.read_file("dac_designation.gpkg")
 
-# Save only two columns to make file smaller
+# Save only a few columns to make file smaller
 
 dac_sm = dac_sm[["tract","geometry","pop_total","Household_Count"]]
 

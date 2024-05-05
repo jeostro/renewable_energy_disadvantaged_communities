@@ -4,18 +4,21 @@
 Created on Sat Apr 20 22:58:01 2024
 
 @author: jeostro
-"""
-# Script 2
-## Purpose: Read NYS parcel data, trim to vacant & some ag parcels, trim to 10+ acres, create gpkg layer
+
+Script 2/6
+Purpose: Trim NY tax parcels to vacant parcels & misc. agricultural parcels 
+    that are 10 acres or more. Create geopackage.
+
+Required input files:
+    -“nys-tax-parcel-centroid-trim.zip", a trimmed NY tax parcel file, 
+    provided by Dr. Wilcoxen.
     
-# Import modules; import fiona to help read parcel centroids
+"""
+    
+# Import modules
 
 import pandas as pd
-import numpy as np
-import requests
 import geopandas as gpd
-import matplotlib.pyplot as plt
-import fiona
 
 # Read file of NY centroids in geopandas 
 
@@ -24,9 +27,6 @@ parcels = gpd.read_file("nys-tax-parcel-centroid-trim.zip")
 # Check sample columns
 
 print(parcels.info())
-
-# Explored parcel centroids data dictionary to identify property type classifications
- #no Python code here
  
 # Select parcels with appropriate agricultural & vacant land codes
  
@@ -48,13 +48,12 @@ print(trimmed["ACRES"])
 
 print(trimmed["CALC_ACRES"])
 
-# Using "CALC_ACRES" column (looks most exact), select parcels of 10+ acres
+# Using "CALC_ACRES" column, select parcels of 10+ acres and print
 
 trimmed = trimmed[trimmed["CALC_ACRES"]>=10]
 print (trimmed)
 
-### TO DO: Get rid of very large parcels? (may be mountains)
-    #Not done yet here; largest in sample is 400 acres
+# Sort based on "CALC_ACRES" and print
     
 trimmed = trimmed.sort_values("CALC_ACRES",ascending=False)
 print(trimmed)

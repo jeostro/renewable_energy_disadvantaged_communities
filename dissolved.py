@@ -4,8 +4,18 @@
 Created on Fri May  3 17:10:39 2024
 
 @author: jeostro
+
+Script 6/6
+Purpose: This dissolves the DAC tract boundaries, creates a 15-mile buffer 
+    around them, and locates parcels within & outside the DACs and the buffer 
+    using spatial joins. This also creates geopackage layers.
+
+Required input files:
+    -"dac_designation.gpkg"
+    -"parcels.gpkg"
+
 """
-# Script 6.  # Purpose: Dissolve DAC tract boundaries, create a 15-mile buffer around them, and find parcels within and outside the DACs and boundaries through spatial joins.
+
 # Import modules
 
 import pandas as pd

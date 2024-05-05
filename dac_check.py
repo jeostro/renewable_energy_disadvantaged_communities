@@ -4,10 +4,19 @@
 Created on Sun Apr 14 21:04:18 2024
 
 @author: jeostro
+
+Script 1/6
+Purpose: Determine whether DAC data uses 2010 or 2020 Census data. 
+    Merge DAC and Census data and check for tract alignment. Create geopackage.
+
+Required input files:
+    -"Final_Disadvantaged_Communities__DAC__2023_20240502.csv", downloaded from 
+    Open Data NY: https://data.ny.gov/Energy-Environment/Final-Disadvantaged-Communities-DAC-2023/2e6c-s6fp/about_data
+    -"cb_2019_36_tract_500k.zip", downloaded from US Census Bureau: 
+    https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html 
+    -Census API key, which can be acquired here: https://api.census.gov/data/key_signup.html
+
 """
-# Script 1
-## Purpose of script: Figure out if DAC data from NYS uses 2020 or 2010 Census data for tracts; 
-## read in Census data, get desired Census info, combine DAC data with Census data, save as gpkg
 
 # Import modules 
 
@@ -158,8 +167,6 @@ print("\nJoin:",join)
 # Check merge indicator's value counts to verify all records matched
 
 print(join["_merge"].value_counts())
-
-# Note: 12 records are right-only after merge; looked at variable explorer, they have nan for most col's
 
 # Check number of records
 
