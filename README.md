@@ -44,7 +44,7 @@ Run this script fifth. This runs a spatial join of the “dac_smaller” data an
 ### dissolved.py
 Run this script last. This dissolves the DAC tract boundaries, creates a 15-mile buffer around them, and locates parcels within the DACs and the buffer using spatial joins. This also creates geopackage layers.
 
-Note: Open QGIS and use the DAC layer, parcel layer, county boundary layer, and dissolved layers to create a map. 
+Finally, open QGIS and use the following files and layers to create map(s): “dissolved.gpkg” (layers: “tracts_dac”,”buffer”,”parcels_within_buffer”), “joined_dac_parcels.gpkg”, and “all_counties.gpkg”.
 
 ## Additional Files
 The repository contains an additional file that explains final DAC criteria: “LMI-daccriteria-fs-1-v2_acc.pdf" from https://climate.ny.gov/Resources/Disadvantaged-Communities-Criteria
@@ -52,5 +52,3 @@ The repository contains an additional file that explains final DAC criteria: “
 ## Analysis and Results
 
 ![map test](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/erie_co_parcels_dacs.png)
-
-[I'm a test link](https://www.google.com)
