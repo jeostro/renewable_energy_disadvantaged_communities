@@ -4,18 +4,25 @@
 Created on Mon Apr 22 22:44:21 2024
 
 @author: jeostro
+
+Script 5/6
+Purpose: Do a spatial join of the “dac_smaller” data and the parcel data, and 
+    create geopackage. Analyze parcels and acres by grouping data, performing 
+    summary statistics, and creating charts. Analyze data by Upstate and 
+    Downstate regions.
+    
+Required input files:
+    -"parcels.gpkg"
+    -"dac_designation_sm.gpkg"
+
 """
-# Script 5
-## Purpose: spatial join of DAC and parcel data
 
 # Import modules 
 
 import pandas as pd
-import numpy as np
 import requests
 import geopandas as gpd
 import matplotlib.pyplot as plt
-import fiona
 import seaborn as sns
 
 # Read in files
@@ -40,17 +47,17 @@ dac = dac.rename(columns={"Household_Count":"household_count"})
 
 dac = dac.to_crs(parcels.crs)
 
-# Do spatial join of DAC's and appropriate parcels: find approp parcels inside DACs
+# Do spatial join of DACs and good parcels: find parcels inside DACs, and print
 
 spat_join = parcels.sjoin(dac,how="left",predicate="within")
-print(spat_join.info())
+print(spat_join)
 
-# Save the parcels that are within DACs
+# Save the parcels that are within DACs, reset index, and print
 
-dac_parcels = spat_join.dropna(subset="tract")
+dac_parcels = spat_join.dropna(subset="tract").reset_index()
 print(dac_parcels)
 
-# Set pop_total column type to integer
+# Set "pop_total" column type to integer
 
 dac_parcels["pop_total"] = dac_parcels["pop_total"].astype(int)
 
@@ -59,36 +66,36 @@ dac_parcels["pop_total"] = dac_parcels["pop_total"].astype(int)
 dac_parcels.to_file("joined_dac_parcels.gpkg",layer="joined")
 
 #%%
-# Find total number of approp parcels in DACs
+# Find total number of good parcels in DACs
 
-print("\nNumber of DAC parcels:",len(spat_join))
+print("\nNumber of DAC parcels:",len(dac_parcels))
 
 # Calculate total calc_acres of parcels within DACs
 
-print("\nTotal acres:",spat_join["CALC_ACRES"].sum())
+print("\nTotal acres:",dac_parcels["CALC_ACRES"].sum())
 
-# Find sum of appropriate acres by municipality
+# Find sum of good acres by municipality
 
-acres_muni = spat_join.groupby("MUNI_NAME")["CALC_ACRES"].sum().sort_values(ascending=False)
+acres_muni = dac_parcels.groupby("MUNI_NAME")["CALC_ACRES"].sum().sort_values(ascending=False)
 print("\nAcres by municipality:",acres_muni.head(20))
 
-# Find sum of appropriate acres within each county
+# Find sum of good acres within each county
 
-spat_join_acres_co = spat_join.groupby("COUNTY_NAME")["CALC_ACRES"].sum().sort_values(ascending=False)
-print("\nAcres by county:",spat_join_acres_co)
+acres_co = dac_parcels.groupby("COUNTY_NAME")["CALC_ACRES"].sum().sort_values(ascending=False)
+print("\nAcres by county:",acres_co)
 
-# Group by tract and sum acres
+# Group by tract and sum good acres
 
-by_tract_acres = spat_join.groupby("tract")["CALC_ACRES"].sum().sort_values(ascending=False)
+by_tract_acres = dac_parcels.groupby("tract")["CALC_ACRES"].sum().sort_values(ascending=False)
 print("\nAcres by tract:",by_tract_acres)
 
-# Group by tract and sum household counts
+###THIS IS HUGE NUMBER!! Group by tract and sum household counts
 
-by_tract_hh = spat_join.groupby("tract")["household_count"].sum().sort_values(ascending=False)
+by_tract_hh = dac_parcels.groupby("tract")["household_count"].sum().sort_values(ascending=False)
 print("\nHouseholds by tract:",by_tract_hh)
 
 #%%
-# Create lists of upstate and downstate counties, so can later graph acres by state area
+# Create lists of upstate and downstate counties
 
 # Create list of upstate counties
 
