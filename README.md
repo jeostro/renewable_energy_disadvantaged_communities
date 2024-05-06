@@ -39,7 +39,7 @@ Run this script third. This filters the DAC data to only a few columns, so the s
 Run this script fourth. This creates a geopackage layer of NY counties using a US Census Bureau cartographic boundary shapefile.
 
 ### join_dac_parcels.py
-Run this script fifth. This runs a spatial join of the “dac_smaller” data and the parcel data and creates a geopackage. It then analyzes parcels and acres by grouping data, performing summary statistics, and creating pie charts. It does an analysis of data based on Upstate and Downstate regions. It produces 2 geopackages, 3 CSVs, and 2 pie charts. 
+Run this script fifth. This runs a spatial join of the “dac_smaller” data and the parcel data and creates a geopackage. It then analyzes parcels and acres by grouping data, performing summary statistics, and creating pie charts. It does an analysis of data based on Upstate and Downstate regions. It produces 2 geopackages, 3 CSVs, and 1 pie chart. 
 
 ### dissolved.py
 Run this script last. This dissolves the DAC tract boundaries, creates a 15-mile buffer around them, and locates parcels within the DACs and the buffer using spatial joins. This also creates a geopackage with 3 layers and 1 CSV.
