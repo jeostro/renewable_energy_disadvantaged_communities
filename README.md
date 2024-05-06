@@ -30,7 +30,7 @@ NYS Tax Parcel Centroid Points, available at NYS GIS Clearinghouse: https://data
 Run this script first. This investigates which version of Census data the state used to define DACs. This script reads a 2019 Census shapefile and verifies that the state uses the 2010 Census tracts in NY to define DACs. It retrieves 2010 Census data using an API and merges the DAC and Census data, as a check on the original DAC file. This script also creates a geopackage layer of DACs.
 
 ### ny_centroids.py
-Run this script second. It filters NY parcels to those that are classified as vacant land, miscellaneous agricultural land, and 10 or more acres in size. This also creates a geopackage layer of the filtered parcels.
+Run this script second. It filters NY parcels to those classified as vacant land, miscellaneous agricultural land, and 10 or more acres in size. This also creates a geopackage layer of the filtered parcels.
 
 ### dac_smaller.py
 Run this script third. This filters the DAC data to only a few columns, so the size is more manageable for later merges. This also creates a geopackage.
@@ -51,13 +51,13 @@ Finally, open QGIS and use the following files and layers to create map(s): “d
 The repository contains an additional file that explains final DAC criteria: “LMI-daccriteria-fs-1-v2_acc.pdf" from https://climate.ny.gov/Resources/Disadvantaged-Communities-Criteria
 
 ## Results and Analysis
-DACs are located throughout NY as shown in the below map of dissolved DAC tract boundaries (in blue) and counties. 
+DACs are located throughout NY, as shown in the below map of dissolved DAC tract boundaries (in blue) and counties. 
 ![map](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/Visualizations/state_dacs.png)
 
 The scripts produce four CSV files. Two list vacant acres within DACs by county and vacant acres within DACs by tract. One CSV contains a list of vacant parcel locations within DACs, and another CSV contains a list of vacant parcel locations within a 15-mile buffer region of DACs, but not within the DACs. These lists indicate which parcels may be available/suitable for community solar in or near DACs.
 
 ### Upstate and Downstate
-According to NYSERDA, 44% of Census tracts within the New York City region are designated as DACs. This is a high percentage of tracts compared to other state regions. The present analysis finds the percentages of vacant parcel acres within DACs in Upstate NY compared to those within DACs in Downstate NY, as indicated in the pie chart below. The Downstate region has only 2% of vacant parcel acres, with the vast majority belonging to DACs in Upstate. 
+According to NYSERDA, 44% of Census tracts within the New York City region are designated as DACs. This is a high percentage of tracts compared to other state regions. The present analysis compares the percentages of vacant parcel acres within DACs in Upstate NY to those within DACs in Downstate NY, as indicated in the pie chart below. The Downstate region has only 2% of vacant parcel acres, with the vast majority belonging to DACs in Upstate. 
 ![chart](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/Visualizations/acres_in_DACs_NY_regions.png)
 
 The maps below were produced using QGIS. They include county boundaries, DAC tracts (in blue), a 15-mile buffer around DACs (in gray), vacant parcels within DACs, and vacant parcels within the buffer. There are two maps of Upstate regions: one shows Erie County and Western NY, and the other shows a larger region of Upstate. Clearly, in Upstate, there are parcels within most DACs, and there are surrounding parcels in the buffer. Therefore, community solar could potentially be installed both within DACs and within 15 miles of DACs. Vacant parcels are abundant in Upstate.
@@ -76,6 +76,6 @@ In contrast to Upstate, the maps below show parcels for Downstate. They include 
 
 
 ### Limitations and Further Research 
-While this study identifies vacant parcels that may be appropriate for community solar, there are many possible restrictions on actual solar development, including owner willingness and land suitability. While this study used centroid data, another analysis could use polygon data to map more detailed DAC boundaries and Census tracts. 
+While this study identifies vacant parcels that may be appropriate for community solar, there are many possible restrictions on actual solar development, including owner willingness and cost. While this study used centroid data, another analysis could use polygon data to map more detailed DAC boundaries and Census tracts. 
 
-Further research could examine how many households could be served in or near each DAC through community solar. Research could also identify where community solar already exists and determine which locations have the greatest need for new community solar installations. Additionally, research should investigate how to best serve the New York City area through solar or other forms of renewable energy, given the lack of vacant parcels for potential community solar in that area.
+Further research could examine how many households could be served in each DAC through community solar. Research could also identify where community solar already exists and determine which locations have the greatest need for new community solar installations. Additionally, research should investigate how to best serve the New York City area through solar or other forms of renewable energy, given the lack of vacant parcels for potential community solar in that area.
