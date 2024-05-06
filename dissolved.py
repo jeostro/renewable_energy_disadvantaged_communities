@@ -65,9 +65,9 @@ buffer = buffer.reset_index()
 
 buffer.to_file("dissolved.gpkg",layer="buffer")
 
-## NEED HOW=LEFT HERE? Do spatial join to find parcels within buffer; print result
+## NEED HOW=LEFT HERE? NO?; Do spatial join to find parcels within buffer; print result
 
-parcels_buffer = parcels.sjoin(buffer,how="left")
+parcels_buffer = parcels.sjoin(buffer)
 print(parcels_buffer)
 
 # Drop extra columns
@@ -119,7 +119,7 @@ print(tracts)
 
 # NEED HOW=LEFT HERE? Do spatial join to find parcels within DAC tracts
 
-parcels_dac = parcels_buffer.sjoin(tracts,how="left")
+parcels_dac = parcels_buffer.sjoin(tracts)
 print(parcels_dac)
 
 # Drop columns
