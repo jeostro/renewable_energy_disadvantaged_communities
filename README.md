@@ -44,6 +44,7 @@ Run this script fifth. This runs a spatial join of the “dac_smaller” data an
 ### dissolved.py
 Run this script last. This dissolves the DAC tract boundaries, creates a 15-mile buffer around them, and locates parcels within the DACs and the buffer using spatial joins. This also creates a geopackage with 3 layers and 1 CSV.
 
+## Using QGIS
 Finally, open QGIS and use the following files and layers to create map(s): “dissolved.gpkg” (layers: “tracts_dac”,”buffer”,”parcels_within_buffer”), “joined_dac_parcels.gpkg”, and “all_counties.gpkg”.
 
 ## Additional Files
