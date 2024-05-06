@@ -51,12 +51,9 @@ Finally, open QGIS and use the following files and layers to create map(s): “d
 The repository contains an additional file that explains final DAC criteria: “LMI-daccriteria-fs-1-v2_acc.pdf" from https://climate.ny.gov/Resources/Disadvantaged-Communities-Criteria
 
 ## Analysis and Results
-DACs are located throughout NYS as shown in this map of dissolved DAC tract boundaries:
+DACs are located throughout NY as shown in the below map of dissolved DAC tract boundaries. ![map](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/Visualizations/state_dacs.png)
 
 The scripts produce four CSV files. Two list vacant acres within DACs by county and vacant acres within DACs by tract. One CSV contains a list of vacant parcel locations within DACs, and another CSV contains a list of vacant parcel locations within a 15-mile buffer region of DACs, but not within the DACs. These lists indicate which parcels may be available/suitable for community solar in or near DACs.
 
-According to NYSERDA, 44% of Census tracts within the New York City region are designated as DACs. This is a high percentage of tracts compared to other state regions. The present analysis finds the percentages of vacant parcel acres within DACs in Upstate NY compared to those within DACs in Downstate NY, as indicated in this pie chart. The Downstate region has only 2% of vacant parcel acres, with the vast majority belonging to DACs in Upstate.
-
-![map test](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/erie_co_parcels_dacs.png)
-
-![pie chart]
+### Upstate and Downstate
+According to NYSERDA, 44% of Census tracts within the New York City region are designated as DACs. This is a high percentage of tracts compared to other state regions. The present analysis finds the percentages of vacant parcel acres within DACs in Upstate NY compared to those within DACs in Downstate NY, as indicated in the pie chart below. The Downstate region has only 2% of vacant parcel acres, with the vast majority belonging to DACs in Upstate. ![chart](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/Visualizations/acres_in_DACs_NY_regions.png)
