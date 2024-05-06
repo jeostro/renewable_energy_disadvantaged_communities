@@ -47,7 +47,7 @@ Run this script last. This dissolves the DAC tract boundaries, creates a 15-mile
 Note: Open QGIS and use the DAC layer, parcel layer, county boundary layer, and dissolved layers to create a map. 
 
 ## Additional Files
-The repository contains an additional file that explains final DAC criteria: “Disadvantaged Communities Criteria Fact Sheet [PDF]” from https://climate.ny.gov/Resources/Disadvantaged-Communities-Criteria
+The repository contains an additional file that explains final DAC criteria: “LMI-daccriteria-fs-1-v2_acc.pdf" from https://climate.ny.gov/Resources/Disadvantaged-Communities-Criteria
 
 ## Analysis and Results
 
