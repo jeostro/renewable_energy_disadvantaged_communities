@@ -56,7 +56,7 @@ DACs are located throughout NY, as shown in the below map of dissolved DAC tract
 
 The scripts produce four CSV files. Two list vacant acres within DACs by county and vacant acres within DACs by tract. One CSV contains a list of vacant parcel locations within DACs, and another CSV contains a list of vacant parcel locations within a 15-mile buffer region of DACs, but not within the DACs. These lists indicate which parcels may be available/suitable for community solar in or near DACs.
 
-### Upstate and Downstate
+### Upstate and Downstate Regions
 According to NYSERDA, 44% of Census tracts within the New York City region are designated as DACs. This is a high percentage of tracts compared to other state regions. The present analysis compares the percentages of vacant parcel acres within DACs in Upstate NY to those within DACs in Downstate NY, as indicated in the pie chart below. The Downstate region has only 2% of vacant parcel acres, with the vast majority belonging to DACs in Upstate. 
 ![chart](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/Visualizations/acres_in_DACs_NY_regions.png)
 
