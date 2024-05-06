@@ -67,18 +67,14 @@ buffer.to_file("dissolved.gpkg",layer="buffer")
 
 ## NEED HOW=LEFT HERE? Do spatial join to find parcels within buffer; print result
 
-parcels_buffer = parcels.sjoin(buffer)
+parcels_buffer = parcels.sjoin(buffer,how="left")
 print(parcels_buffer)
 
-# Drop extra index columns
+# Drop extra columns
 
-parcels_buffer = parcels_buffer.drop(columns = ["index_right","index"])
-
-# ?? Drop other extra columns
-# parcels_buffer = parcels_buffer.drop(columns = [
-  #  "state", "county", "tract", "Percentile_Rank_Combined_Statewide",
-  #  "Percentile_Rank_Combined_NYC","Percentile_Rank_Combined_ROS", "Low_Vegetative_Cover"
-  #  ])
+parcels_buffer = parcels_buffer.drop(columns=[
+    "index_right","index","CITYTOWN_S","PROP_CLASS","ACRES"
+    ])
 
 # Save to file as layer
 
@@ -86,7 +82,7 @@ parcels_buffer.to_file("dissolved.gpkg",layer="parcels_buffer")
 
 # Keep parcels that are within buffer
 
-#parcels_buffer = parcels_buffer[parcels_buffer["geometry"!="nan"]]
+#parcels_buffer = parcels_buffer[parcels_buffer[["geometry"]!="nan"]
 
 # DON'T NEED TO DO THIS?? Drop missing radius data
 # parcels_buffer_keep = parcels_buffer.dropna(subset="radius_m")
@@ -95,11 +91,45 @@ parcels_buffer.to_file("dissolved.gpkg",layer="parcels_buffer")
 
 parcels_buffer = parcels_buffer.to_crs(tracts.crs)
 
+# Drop extra columns in "tracts" and print
+
+tracts = tracts.drop(columns=[
+    "STATEFP","COUNTYFP","TRACTCE","AFFGEOID","LSAD","ALAND","AWATER","REDC",
+    "County Name","City_Town","NYC_Region","Urban_Rural",
+    "Household_Low_Count_Flag","Population_Count","Household_Count",
+    "Percentile_Rank_Combined_Statewide","Percentile_Rank_Combined_NYC",
+    "Percentile_Rank_Combined_ROS","Combined_Score","Burden_Score_Percentile",
+    "Vulnerability_Score_Percentile","Burden_Score","Vulnerability_Score",
+    "Benzene_Concentration","Particulate_Matter_25","Traffic_Truck_Highways",
+    "Traffic_Number_Vehicles","Wastewater_Discharge","Housing_Vacancy_Rate",
+    "Industrial_Land_Use","Landfills","Oil_Storage","Municipal_Waste_Combustors",
+    "Power_Generation_Facilities","RMP_Sites","Remediation_Sites",
+    "Scrap_Metal_Processing","Agricultural_Land_Use","Coastal_Flooding_Storm_Risk",
+    "Days_Above_90_Degrees_2050","Drive_Time_Healthcare","Inland_Flooding_Risk",
+    "Low_Vegetative_Cover","Asian_Percent","Black_African_American_Percent",
+    "Redlining_Updated","Latino_Percent","English_Proficiency","Native_Indigenous",
+    "LMI_80_AMI","LMI_Poverty_Federal","Population_No_College",
+    "Household_Single_Parent","Unemployment_Rate","Asthma_ED_Rate","COPD_ED_Rate",
+    "Households_Disabled","Low_Birth_Weight","MI_Hospitalization_Rate",
+    "Health_Insurance_Rate","Age_Over_65","Premature_Deaths","Internet_Access",
+    "Home_Energy_Affordability","Homes_Built_Before_1960","Mobile_Homes",
+    "Rent_Percent_Income","Renter_Percent","pop_total"
+    ])
+print(tracts)
+
 # NEED HOW=LEFT HERE? Do spatial join to find parcels within DAC tracts
 
-parcels_dac = parcels_buffer.sjoin(tracts)
+parcels_dac = parcels_buffer.sjoin(tracts,how="left")
 print(parcels_dac)
-                                 
+
+# Drop columns
+
+parcels_dac = parcels_dac.drop(columns=["state","county"])
+
+# Drop where "tract" is missing
+
+parcels_dac = parcels_dac.dropna(subset="tract")
+
 # Reset index
 
 parcels_dac = parcels_dac.reset_index()
