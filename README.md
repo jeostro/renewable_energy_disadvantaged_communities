@@ -51,5 +51,6 @@ The repository contains an additional file that explains final DAC criteria: “
 
 ## Analysis and Results
 
+![NYC map test](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/NYC_parcels_in_buffer.png)
 
 [I'm a test link](https://www.google.com)
