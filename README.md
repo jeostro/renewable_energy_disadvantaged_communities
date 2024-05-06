@@ -30,7 +30,7 @@ NYS Tax Parcel Centroid Points, available at NYS GIS Clearinghouse: https://data
 Run this script first. This investigates which version of Census data the state used to define DACs. This script reads a 2019 Census shapefile and verifies that the state uses the 2010 Census tracts in NY to define DACs. It retrieves 2010 Census data using an API and merges the DAC and Census data, as a check on the original DAC file. This script also creates a geopackage layer of DACs.
 
 ### ny_centroids.py
-Run this script second. It filters NY parcel data parcels to those that are classified as vacant land, miscellaneous agricultural land, and 10 or more acres in size. This also creates a geopackage layer of the filtered parcels.
+Run this script second. It filters NY parcels to those that are classified as vacant land, miscellaneous agricultural land, and 10 or more acres in size. This also creates a geopackage layer of the filtered parcels.
 
 ### dac_smaller.py
 Run this script third. This filters the DAC data to only a few columns, so the size is more manageable for later merges. This also creates a geopackage.
