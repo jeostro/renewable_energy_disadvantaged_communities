@@ -53,3 +53,5 @@ The repository contains an additional file that explains final DAC criteria: “
 ## Analysis and Results
 
 ![map test](https://github.com/jeostro/solar_energy_disadvantaged_communities/blob/main/erie_co_parcels_dacs.png)
+
+![pie chart]
