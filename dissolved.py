@@ -7,8 +7,10 @@ Created on Fri May  3 17:10:39 2024
 
 Script 6/6
 Purpose: This dissolves the DAC tract boundaries, creates a 15-mile buffer 
-    around them, and locates parcels within & outside the DACs and the buffer 
-    using spatial joins. This also creates geopackage layers.
+    around them, and locates parcels within & outside the DACs and within the 
+    buffer using spatial joins. The goal is to make a list of parcels that are 
+    outside of DACs but within the 15-mile buffer. This also creates geopackage
+    layers.
 
 Required input files:
     -"dac_designation.gpkg"
@@ -23,7 +25,6 @@ import numpy as np
 import requests
 import geopandas as gpd
 import matplotlib.pyplot as plt
-import fiona
 import os
 
 # Read in DAC shapefile and parcels file
@@ -43,7 +44,6 @@ dissolved = dissolved.to_crs(parcels.crs)
 # Reset index: move the index into an ordinary column to preserve it; print
 
 dissolved = dissolved.reset_index()
-
 print(dissolved)
 
 # Save dissolved DAC tracts to geopackage as layer
@@ -86,6 +86,8 @@ parcels_buffer.to_file("dissolved.gpkg",layer="parcels_buffer")
 
 # Keep parcels that are within buffer
 
+#parcels_buffer = parcels_buffer[parcels_buffer["geometry"!="nan"]]
+
 # DON'T NEED TO DO THIS?? Drop missing radius data
 # parcels_buffer_keep = parcels_buffer.dropna(subset="radius_m")
 
@@ -96,6 +98,7 @@ parcels_buffer = parcels_buffer.to_crs(tracts.crs)
 # NEED HOW=LEFT HERE? Do spatial join to find parcels within DAC tracts
 
 parcels_dac = parcels_buffer.sjoin(tracts)
+print(parcels_dac)
                                  
 # Reset index
 
@@ -105,7 +108,7 @@ parcels_dac = parcels_dac.reset_index()
 
 parcels_dac.to_file("dissolved.gpkg",layer="dac_parcels")
 
-## ?? Save dataframe of parcels in buffer but not in DACs
+## STILL NEED TO GET THESE: Save dataframe of parcels in buffer but not in DACs
 #check = parcels_dac["geometry"] != parcels_buffer["geometry"]
 
 #%%
